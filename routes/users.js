@@ -44,14 +44,15 @@ router.delete('/:name', function(req, res, next) {
     fs.readFile('./public/assets.json', 'utf8', function (err, data) {
         if (err) throw err;
         obj = JSON.parse(data);
+        var objClone = { assets : [] }
         for(var index in obj.assets){
             var asset = obj.assets[index];
-            if(req.params.name === asset.name){
-                obj.assets.splice(index, 1);
+            if(!(req.params.name.toString() === asset.name)){
+                objClone.assets.push(asset);
             }
         }
-        fs.writeFileSync('./public/assets.json', JSON.stringify(obj));
-        res.send(obj);
+        fs.writeFileSync('./public/assets.json', JSON.stringify(objClone));
+        res.send(objClone);
     });
 });
 
