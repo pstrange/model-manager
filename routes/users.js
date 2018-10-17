@@ -19,6 +19,7 @@ router.get('/', function(req, res, next) {
     fs.readFile('./public/assets.json', 'utf8', function (err, data) {
         if (err) throw err;
         obj = JSON.parse(data);
+        res.header('Access-Control-Allow-Origin', '*');
         res.send(obj);
     });
 });
@@ -35,6 +36,7 @@ router.post('/:name/check', function(req, res, next) {
             }
         }
         fs.writeFileSync('./public/assets.json', JSON.stringify(obj));
+        res.header('Access-Control-Allow-Origin', '*');
         res.send(obj);
     });
 });
@@ -52,6 +54,7 @@ router.delete('/:name', function(req, res, next) {
             }
         }
         fs.writeFileSync('./public/assets.json', JSON.stringify(objClone));
+        res.header('Access-Control-Allow-Origin', '*');
         res.send(objClone);
     });
 });
@@ -71,6 +74,7 @@ router.post('/', uploadModels.fields([{ name: 'image', maxCount: 1 }, { name: 'b
             check: false
         });
         fs.writeFileSync('./public/assets.json', JSON.stringify(obj));
+        res.header('Access-Control-Allow-Origin', '*');
         res.send(obj);
     });
 });
