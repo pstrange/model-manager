@@ -5,7 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/models');
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Credentials', 'true');
@@ -15,8 +15,7 @@ var allowCrossDomain = function(req, res, next) {
     // intercept OPTIONS method
     if ('OPTIONS' == req.method) {
         res.send(200);
-    }
-    else {
+    } else {
         next();
     }
 };
