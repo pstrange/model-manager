@@ -4,8 +4,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+process.env.CLOUDINARY_URL = process.env.CLOUDINARY_URL || 'cloudinary://335631862727342:VzgjpuJjaiHvuzePnCA2faCaYHc@hbru3lefw';
+
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/models');
+var modelsRouter = require('./routes/models');
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Credentials', 'true');
@@ -34,7 +36,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/models', usersRouter);
+app.use('/models', modelsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

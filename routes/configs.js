@@ -1,7 +1,7 @@
 const configs = {
     app: {
         port: process.env.PORT || '3000',
-        res_url: process.env.URL || 'http://localhost:3000',
+        res_url: process.env.URL || 'http://localhost:3000'
     },
     db: {
         url : process.env.MONGODB_URI || 'mongodb://localhost',

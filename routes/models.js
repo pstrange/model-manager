@@ -1,7 +1,7 @@
 var express = require('express');
 var multer = require('multer');
+var cloudinary = require('cloudinary');
 var {Asset} = require('./mongodb');
-var configs = require('./configs');
 
 var router = express.Router();
 
@@ -55,22 +55,30 @@ router.delete('/:name', function(req, res, next) {
 });
 
 router.post('/', uploadModels.fields([{ name: 'image', maxCount: 1 }, { name: 'bundle', maxCount: 1 }]), function(req, res, next) {
-    var envurl = configs.app.res_url;
     var thumb = req.files['image'][0];
     var url = req.files['bundle'][0];
-    var asset = new Asset({
-        name: req.body.name,
-        thumb: envurl+'/bundle/'+thumb.originalname,
-        url: envurl+'/bundle/'+url.originalname });
+    var body = { name: req.body.name, thumb: '', url: '' };
 
-    asset.save()
-        .then((result) => {
-            res.header('Access-Control-Allow-Origin', '*');
-            res.send(result);
-        })
-        .catch((ex) => {
-            res.status(400).send({message:ex.message});
-        });
+        cloudinary.v2.uploader.upload(thumb.path)
+            .then((result) => {
+                // console.log(result);
+                body.thumb = result.url;
+                return cloudinary.v2.uploader.upload(url.path, {resource_type: 'raw'});
+            })
+            .then((result) => {
+                // console.log(result);
+                body.url = result.url;
+                var asset = new Asset(body);
+                return asset.save();
+            })
+            .then((result) => {
+                res.header('Access-Control-Allow-Origin', '*');
+                res.send(result);
+            })
+            .catch((err) => {
+                console.log(err);
+                res.send(err);
+            });
 });
 
 module.exports = router;
