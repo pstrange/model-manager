@@ -62,12 +62,13 @@ router.post('/', uploadModels.fields([{ name: 'image', maxCount: 1 }, { name: 'b
         cloudinary.v2.uploader.upload(thumb.path)
             .then((result) => {
                 // console.log(result);
-                body.thumb = cloudinary.url(result.public_id, {crop:'thumb', width:128, height:128});
+                body.thumb = cloudinary.url(result.public_id, {secure: true, crop:'thumb', width:128, height:128});
+                // res.send(result);
                 return cloudinary.v2.uploader.upload(url.path, {resource_type: 'raw'});
             })
             .then((result) => {
                 // console.log(result);
-                body.url = result.url;
+                body.url = result.secure_url;
                 var asset = new Asset(body);
                 return asset.save();
             })
