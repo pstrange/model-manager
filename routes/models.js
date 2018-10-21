@@ -62,7 +62,7 @@ router.post('/', uploadModels.fields([{ name: 'image', maxCount: 1 }, { name: 'b
         cloudinary.v2.uploader.upload(thumb.path)
             .then((result) => {
                 // console.log(result);
-                body.thumb = result.url;
+                body.thumb = cloudinary.url(result.public_id, {crop:'thumb', width:128, height:128});
                 return cloudinary.v2.uploader.upload(url.path, {resource_type: 'raw'});
             })
             .then((result) => {
