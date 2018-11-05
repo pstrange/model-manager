@@ -8,6 +8,7 @@ process.env.CLOUDINARY_URL = process.env.CLOUDINARY_URL || 'cloudinary://3356318
 
 var indexRouter = require('./routes/index');
 var modelsRouter = require('./routes/models');
+var layoutRouter = require('./routes/layouts');
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Credentials', 'true');
@@ -37,6 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/models', modelsRouter);
+app.use('/layouts', layoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
