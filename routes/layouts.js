@@ -17,6 +17,7 @@ router.post('/', function(req, res, next) {
     var json = JSON.stringify(req.body);
     fs.writeFileSync('data.json', json, 'utf8');
     res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'content-type');
     res.send({message:'saved'});
 });
 
