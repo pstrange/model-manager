@@ -14,9 +14,10 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
     //var json = JSON.stringify(req.body);
+
     fs.writeFileSync('data.json', req.body, 'utf8');
     res.header('Access-Control-Allow-Origin', '*');
-    res.send({message:'success'});
+    res.send({message:'saved'});
 });
 
 module.exports = router;
