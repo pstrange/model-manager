@@ -59,8 +59,8 @@
       <file leaf-file-name="layouts.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/layouts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="19" column="28" lean-forward="false" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+            <state relative-caret-position="462">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -258,12 +258,12 @@
       <workItem from="1541009413936" duration="598000" />
       <workItem from="1541443326272" duration="1395000" />
       <workItem from="1541451183406" duration="530000" />
-      <workItem from="1541451809473" duration="275000" />
+      <workItem from="1541451809473" duration="595000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="36437000" />
+    <option name="totallyTimeSpent" value="36757000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-2109" y="36" width="2118" height="1281" extended-state="6" />
@@ -654,8 +654,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/layouts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="28" lean-forward="false" selection-start-line="19" selection-start-column="28" selection-end-line="19" selection-end-column="28" />
+        <state relative-caret-position="462">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
         </state>
       </provider>
