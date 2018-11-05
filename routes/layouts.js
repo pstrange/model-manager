@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
         if (err){
             console.log(err);
         } else {
+            res.header('Access-Control-Allow-Origin', '*');
             res.send(JSON.parse(data));
         }});
 });
