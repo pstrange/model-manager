@@ -13,7 +13,7 @@ var picRouter = require('./routes/pictures');
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Headers', 'Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time');
+    res.header('Access-Control-Allow-Headers', 'Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time, content-type');
     res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
     res.header('Access-Control-Allow-Origin', '*');
     // intercept OPTIONS method
