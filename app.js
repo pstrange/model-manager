@@ -9,10 +9,11 @@ process.env.CLOUDINARY_URL = process.env.CLOUDINARY_URL || 'cloudinary://3356318
 var indexRouter = require('./routes/index');
 var modelsRouter = require('./routes/models');
 var layoutRouter = require('./routes/layouts');
+var picRouter = require('./routes/pictures');
 
 var allowCrossDomain = function(req, res, next) {
     res.header('Access-Control-Allow-Credentials', 'true');
-    res.header('Access-Control-Allow-Headers', 'Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time, Content-Type');
+    res.header('Access-Control-Allow-Headers', 'Accept, X-Access-Token, X-Application-Name, X-Request-Sent-Time');
     res.header('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
     res.header('Access-Control-Allow-Origin', '*');
     // intercept OPTIONS method
@@ -39,6 +40,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/models', modelsRouter);
 app.use('/layouts', layoutRouter);
+app.use('/succespictures', picRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
